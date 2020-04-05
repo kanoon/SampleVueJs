@@ -1,0 +1,70 @@
+<html>
+    <head>
+        <title>Basic VueJs interact</title>
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+        <style>
+            .box{
+                height: 50px;
+                width: 50px;
+                background-color:gray;
+            }
+            .red{
+                background-color: red;
+            }
+            .yellow{
+                background-color: yellow;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Basic VueJs interact</h1>
+        <div id="app">
+            <p v-once>v-once message: {{ message }}</p>
+            sayHello(): {{ sayHello() }}
+            <hr/>
+            v-bind:href/:href
+            <!--<a v-bind:href="link" target="blank">Google</a>-->
+            <a :href="link" target="blank">Google</a>
+            <hr/>
+            v-html:
+            <div v-html="finishLink"></div>
+            <hr/>
+            v-on:click:/@click
+            <!--No pass Arguments-->
+            <!--<button v-on:click="increase">Increase</button>-->
+            <button @click="increase">Increase</button>
+            <!--With pass Arguments-->
+            <button v-on:click="increaseStep(2, $event)">Increase with 2</button>
+            <p>counter: {{counter}}</p>
+            <hr/>
+            mousemove:
+            <p v-on:mousemove="updateCoordinates">
+                Coordinates: {{x}} / {{y}} - 
+                <span v-on:mousemove.stop="">DEAD SPOT</span>
+            </p>
+            <hr/>
+            Keyboard events: v-on:keyup.enter.space
+            <input type="text" v-on:keyup.enter.space="alertMe">
+            <hr/>
+            Two-way: v-model
+            <input type="text" v-model="text">
+            <p>{{text}}</p>
+            <hr/>
+            Computed properties:
+            <button v-on:click="counter++">Increase counter</button>
+            <button v-on:click="seondCounter++">Increase seondCounter</button>
+            <p>Counter: {{counter}} | {{seondCounter}}</p>
+            <p>Result: {{result()}} | {{output}}</p>
+            <hr/>
+            style class
+            <div class="box" :class="divClasses" @click="attachRed = !attachRed"></div>
+            <input type="text" v-model="color">
+            <div class="box" :class="[color,{red: attachRed}]" @click="attachRed = !attachRed"></div>
+            <hr/>
+            style
+            <div class="box" :style=""></div>
+        </div>
+
+        <script src="main.js" ></script>
+    </body>
+</html>
